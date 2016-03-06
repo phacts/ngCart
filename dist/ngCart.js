@@ -234,15 +234,18 @@ angular.module('ngCart', ['ngCart.directives'])
 
         item.prototype.setPrice = function(price){
             var priceFloat = parseFloat(price);
-            if (priceFloat) {
-                if (priceFloat <= 0) {
-                    $log.error('A price must be over 0');
-                } else {
-                    this._price = (priceFloat);
-                }
-            } else {
-                $log.error('A price must be provided');
-            }
+            //if (priceFloat) {
+            //    if (priceFloat <= 0) {
+            //        $log.error('A price must be over 0');
+            //    } else {
+            //        this._price = (priceFloat);
+            //    }
+            //} else {
+            //    $log.error('A price must be provided');
+            //}
+            if (!priceFloat)
+              priceFloat = 0.00;
+            this._price = (priceFloat);
         };
         item.prototype.getPrice = function(){
             return this._price;
